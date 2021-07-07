@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <title>LifeSpot</title>
     <script src="../Static/js/index.js"></script>
+    <script>//handleSession()</script>
     <link href="../Static/CSS/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <header>
         <h1>LifeSpot — прямые трансляции с улиц</h1>
         <p>Покажем, что происходит прямо сейчас</p>
-        <p><input type="text" name="q" placeholder="Поиск по сайту"></p>
+        <p>
+            <input type="text" oninput="filterContent()" size=50%>
+        </p>
     </header>
-    
+
     <div class="bordered">
-        
+
 
         <div class="video-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/srlpC5tmhYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
