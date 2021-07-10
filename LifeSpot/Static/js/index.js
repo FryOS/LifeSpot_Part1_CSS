@@ -1,14 +1,8 @@
-function handleSession() {
-
-    // создадим объект Map для хранения сессии
+let sessionHandler = function handleSession() {
     let session = new Map();
-    // Сохраним UserAgent
     session.set("userAgent", window.navigator.userAgent)
+    session.set("age", prompt("Пожалуйста, введите ваш возраст?"))
 
-    // Запросим возраст пользователя и тоже сохраним
-    session.set("age", prompt("Пожалуйста, введите ваш возраст"))
-
-    // Проверка на возраст и сохранение сессии
     if (session.get("age") >= 18) {
         let startDate = new Date().toLocaleString();
 
@@ -20,31 +14,55 @@ function handleSession() {
         window.location.href = "http://www.google.com"
         a = true + 20 + "name"
     }
-    // Вывод в консоль
+
     for (let result of session) {
         console.log(result)
     }
 }
 
-function filterContent() {
-
-    // Сохраняем текст пользовательского запроса.
+// Сохраняем функцию 1  в переменную
+let contentFilter = function filterContent() {
     let inputString = document.getElementsByTagName('input')[0].value.toLowerCase();
-    // Находим контейнеры с видео, которые необходимо фильтровать
     let elements = document.getElementsByClassName('video-container');
 
-    // Пробегаемся по контейнерам
     for (let i = 0; i <= elements.length; i++) {
-        // Вытаскиваем текст описания видео, которое необходимо отфильтровать
         let videoText = elements[i].getElementsByTagName('h3')[0].innerText;
 
-        // Выполняем фильтрацию, сравнивая значения в нижнем регистре
         if (!videoText.toLowerCase().includes(inputString.toLowerCase())) {
-            // Скрываем неподходящие
             elements[i].style.display = 'none';
         } else {
-            // Показываем подходящие
             elements[i].style.display = 'inline-block';
         }
     }
+}
+
+
+function getReview() {
+    // Создадим объект
+    let review = {}
+
+    // Сохраним свойство имени
+    review["userName"] = prompt("Как вас зовут ?")
+    if (review["userName"] == null) {
+        return
+    }
+
+    // Сохраним текст отзыва
+    review["comment"] = prompt("Напишите свой отзыв")
+    if (review["comment"] == null) {
+        return
+    }
+
+    // Сохраним текущее время
+    review["date"] = new Date().toLocaleString()
+
+    // Добавим на страницу
+    writeReview(review)
+}
+
+const writeReview = review => {
+    document.getElementsByClassName('reviews')[0].innerHTML += '    <div class="review-text">\n' +
+        `<p> <i> <b>${review['userName']}</b>  ${review['date']}</i></p>` +
+        `<p>${review['comment']}</p>` +
+        '</div>';
 }
