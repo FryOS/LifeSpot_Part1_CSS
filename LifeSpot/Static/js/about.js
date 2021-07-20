@@ -1,1 +1,1 @@
-alert("Javascript для страницы 'о проекте' подключен!")
+alert("JS is ready!")
